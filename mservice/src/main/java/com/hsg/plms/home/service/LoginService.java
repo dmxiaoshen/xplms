@@ -1,6 +1,9 @@
 
 package com.hsg.plms.home.service;
 
-public interface LoginService {
+import com.hsg.plms.home.entity.User;
 
+public interface LoginService {
+    
+    void saveUser(User u);
 }
