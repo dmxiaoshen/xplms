@@ -9,7 +9,8 @@
 		<module>mbase</module>
 		<module>mpojo</module>
 		<module>mservice</module>
-		<module>mcommon</module>
+		<module>mcommon</module>	
+		<module>mshiro</module>
 		<module>plms</module>
 	</modules>
 

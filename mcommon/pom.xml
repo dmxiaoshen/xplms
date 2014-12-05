@@ -20,6 +20,6 @@
 		<groupId>com.hsg.plms</groupId>
 		<artifactId>mbase</artifactId>
 		<version>${project.version}</version>
-	</dependency>   
+	</dependency>   	
   </dependencies>
 </project>

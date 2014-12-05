@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd http://www.springframework.org/schema/mvc
+					    http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd http://www.springframework.org/schema/aop
+						http://www.springframework.org/schema/aop/spring-aop-3.1.xsd http://www.springframework.org/schema/tx
+						http://www.springframework.org/schema/tx/spring-tx-3.1.xsd ">
+
+	<description>Shiro Configuration</description>
+
+	<!-- Shiro's main business-tier object for web-enabled applications -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="myRealm" />
+		<property name="cacheManager" ref="cacheManager" />
+	</bean>
+
+	<!-- 用户授权信息Cache -->
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		 <property name="cacheManagerConfigFile" value="classpath:cache/ehcache-shiro-local.xml" 
+			/> 
+	</bean>
+
+	<!-- 项目自定义的Realm -->
+	<bean id="myRealm" class="com.hsg.plms.shiro.entity.MyRealm">
+		<property name="credentialsMatcher" ref="passwordMatcher" />
+		<property name="cacheManager" ref="cacheManager" />
+	</bean>
+
+	<bean id="passwordMatcher"
+		class="org.apache.shiro.authc.credential.HashedCredentialsMatcher">
+		<property name="hashAlgorithmName" value="SHA-256" /><!-- MD5 
+			SHA-256 SHA-1 -->
+		<property name="storedCredentialsHexEncoded" value="false" />
+			<!-- 是否16,默认true,此处用base64 -->
+		<property name="hashIterations" value="1"></property><!-- 迭代次数,默认1 -->
+	</bean>
+
+	<!-- Shiro Filter -->
+	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
+		<property name="securityManager" ref="securityManager" />
+ 		<property name="loginUrl" value="/login/index" /> 
+		<property name="successUrl" value="/" />
+		<property name="unauthorizedUrl" value="/login/index" />
+		 <property name="filters">
+			<map>
+				<entry key="my_authc">
+					<bean class="com.hsg.plms.shiro.filter.MyAuthenticatingFilter" />
+				</entry>
+			</map>
+		</property>
+		<property name="filterChainDefinitions">
+			<value>			
+				/login/logout = logout
+				/static/** = anon	
+				/login/getCaptcha = anon							
+				/** = my_authc
+			</value>
+		</property>
+	</bean>
+
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 -->
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor" />
+
+</beans>

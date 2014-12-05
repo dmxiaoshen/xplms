@@ -17,6 +17,11 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.hsg.plms</groupId>
+			<artifactId>mshiro</artifactId>
+			<version>${project.version}</version>
+		</dependency> 
+		<dependency>
+			<groupId>com.hsg.plms</groupId>
 			<artifactId>mservice</artifactId>
 			<version>${project.version}</version>
 		</dependency>

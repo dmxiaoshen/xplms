@@ -9,9 +9,13 @@
     http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 	
 	<!-- 默认的注解映射的支持 --> 
-	<mvc:annotation-driven />
+	<mvc:annotation-driven conversion-service="conversionService">
+		<mvc:message-converters>
+			<bean class="org.springframework.http.converter.json.MappingJacksonHttpMessageConverter" />
+		</mvc:message-converters>
+	</mvc:annotation-driven>
 	
-	<!-- 自动扫描controller包下的所有类，使其认为spring mvc的控制器 -->
+
 	<context:component-scan base-package="com.hsg.plms.*.web" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Controller" />
 	</context:component-scan>
@@ -19,12 +23,29 @@
 	<!-- 静态资源处理 -->
 	<mvc:default-servlet-handler />
 	
-	<mvc:view-controller path="/" view-name="redirect:/login/index"/>
+	<mvc:view-controller path="/" view-name="redirect:/home/index"/>
 	
-	<!-- 对模型视图名称的解析，即在模型视图名称添加前后缀 -->
+
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<property name="prefix" value="/WEB-INF/jsp/" />
 		<property name="suffix" value=".jsp" />
 	</bean>
+	
+	<!-- request请求参数绑定类型定义-->
+	<bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+		<property name="converters">
+			<set>
+				<!-- 此处可以定义多种转换类型 -->
+				<bean class="com.hsg.plms.base.converter.DateConverter" />
+			</set>
+		</property>
+	</bean>
+	
+	<!-- shiro相关  @RequiresRoles，@RequiresPermissions 等等使用-->
+ 	<bean class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
+		<property name="securityManager" ref="securityManager" />	
+	</bean>
+	
+	<bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" depends-on="lifecycleBeanPostProcessor" /> 
 			
 </beans>

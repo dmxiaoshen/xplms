@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ehcache updateCheck="false" name="hibernateCache">
+
+	<diskStore path="F:/plms/ehcache/hibernate-ehcache" />
+
+	<!-- DefaultCache setting. -->
+	<defaultCache maxEntriesLocalHeap="10000" eternal="false" timeToIdleSeconds="300" timeToLiveSeconds="600"
+		overflowToDisk="false" maxEntriesLocalDisk="100000" />
+
+	<!-- Special objects setting. -->
+	 <cache name="com.charles.demo.user.entity.User"
+        maxElementsInMemory="1000"
+        timeToLiveSeconds="3600"/>
+</ehcache>

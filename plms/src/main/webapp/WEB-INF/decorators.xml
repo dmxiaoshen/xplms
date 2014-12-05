@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/WEB-INF/jsp/layout/">
+	<excludes>
+		<pattern>/static/*</pattern>
+		<pattern>/login/index</pattern>
+	</excludes>
+	
+	 <decorator name="header" page="header.jsp"/>
+	
+	<!--<decorator name="userCenter" page="accountDetail.jsp" >
+		<pattern>/userCenter/account/*</pattern>
+	</decorator>
+	
+	<decorator name="myProfile" page="myProfile.jsp" >
+		<pattern>/user/*</pattern>
+	</decorator>
+	
+	<decorator name="tradeManage" page="tradeManage.jsp" >
+        <pattern>/tradeManage/*</pattern>
+        <pattern>/draftManage/waittingList*</pattern>
+	</decorator> -->
+ 	
+	<decorator name="default" page="default.jsp">
+		<pattern>/*</pattern>
+	</decorator>
+	
+	
+</decorators>
