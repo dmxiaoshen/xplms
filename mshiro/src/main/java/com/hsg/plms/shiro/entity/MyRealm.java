@@ -25,15 +25,14 @@ public class MyRealm extends AuthorizingRealm{
     /** 授权回调*/
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
-        //principals.fromRealm(getName()).iterator().next();
+       //principals.fromRealm(getName()).iterator().next();
         //ShiroUser u = (ShiroUser)principals.getPrimaryPrincipal();
         //String currentUsername = (String)super.getAvailablePrincipal(principals);
         ShiroUser shiroUser = (ShiroUser) principals.fromRealm(getName()).iterator().next(); // 只有一个桥梁
         User user = userService.findUserByName(shiroUser.getUsername());
         if (user != null) {
-            SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();
-            //List<String> roleCodes = userRoleService.findRoleCodesByUserId(user.getId());
-            info.addObjectPermission(new AllPermission());
+            SimpleAuthorizationInfo info = new SimpleAuthorizationInfo();           
+            info.addObjectPermission(new AllPermission());          
             return info;
         }
         return null;

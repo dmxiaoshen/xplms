@@ -12,19 +12,22 @@
 <script type="text/javascript" src="${ctx}/static/js/validationEngine/js/jquery.validationEngine.js" charset="utf-8"></script>
 <script type="text/javascript" src="${ctx}/static/js/validationEngine/js/languages/jquery.validationEngine-zh_cn.js" charset="utf-8"></script>
 <script type="text/javascript">
+var ctx = "${ctx}";
 $(function(){
 	var errorCode = "${errorCode}";
 	var error = "${error}";
 	if(errorCode){
 		if(errorCode=="1"){
-			$("input[name='username']").validationEngine('showPrompt', error, 'error', "centerRight" , true);
+			$("input[name='username']").validationEngine('showPrompt', error, 'error', "centerRight" , true);		
 		}
 		if(errorCode=="2"){
 			$("input[name='captcha']").validationEngine('showPrompt', error, 'error', "centerRight" , true);
 		}
 	}
+
+	
 	$("#capt").click(function(){
-		this.src="${ctx}/login/getCaptcha?time="+(new Date()).getTime();
+		$("#imgs").attr("src","${ctx}/login/getCaptcha?time="+(new Date()).getTime());
 	});
 	
 	$("#form").validationEngine({
@@ -32,12 +35,40 @@ $(function(){
 		promptPosition : "centerRight",
 		scroll : false,
 		maxErrorsPerField : 1,
+/* 		customFunctions:{
+			checkCaptcha:checkCaptcha
+		}, */
 	    onValidationComplete : function(form,valid){
 			if(valid){
 				return true;
 			}
 		}
 	});	
+	
+	 /* function checkCaptcha($field, rules, i, options){
+		$(".parentFormform").remove();
+		 var parmCode = $field.val();
+		 
+		    var isOk = false;
+		    $.ajax({
+		    	type:"post",
+		    	async:false,
+		    	url:ctx+"/login/checkCaptcha",
+		    	data:{
+		    		captcha:parmCode
+		    	},
+		    	dataType:"json",
+		    	success:function(data){	    		
+		    			isOk = data;	    		
+		    	}
+		    	
+		    });
+		    
+		    if(isOk){
+		    	//$("input[name='captcha']").validationEngine('showPrompt', "* 验证码错误", 'error', "centerRight" , true);
+		    	return "* 验证码错误";
+		    }
+	} */ 
 });
 </script>
 </head>
@@ -49,7 +80,7 @@ $(function(){
 <p>
 <label>密码:</label><input type="password" name="password" class="validate[required]" value="${user.password}" />
 </p>
-<p><label>验证码:</label><input type="text" maxlength=4 name="captcha" class="validate[required]"/><img src="getCaptcha" id="capt"/></p>
+<p><label>验证码:</label><input type="text" maxlength=4 name="captcha" class="validate[required]"/><img src="getCaptcha" id="imgs" />&nbsp;<a id="capt" href="#">看不清</a></p>
 <p><input type="submit" value="登录" /></p>
 </form>
 </body>
