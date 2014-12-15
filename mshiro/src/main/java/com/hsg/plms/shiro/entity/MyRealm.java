@@ -14,8 +14,8 @@ import org.apache.shiro.util.SimpleByteSource;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hsg.plms.base.entity.ShiroUser;
-import com.hsg.plms.home.entity.User;
-import com.hsg.plms.home.service.UserService;
+import com.hsg.plms.user.entity.User;
+import com.hsg.plms.user.service.UserService;
 
 public class MyRealm extends AuthorizingRealm{
     

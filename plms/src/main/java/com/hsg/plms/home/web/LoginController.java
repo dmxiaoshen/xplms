@@ -26,8 +26,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hsg.plms.common.constants.AppConstants;
 import com.hsg.plms.common.utils.CaptchaUtil;
-import com.hsg.plms.home.entity.User;
 import com.hsg.plms.shiro.exception.IncorrectCaptchaException;
+import com.hsg.plms.user.entity.User;
 
 @Controller
 @RequestMapping(value = "/login")

@@ -1,4 +1,4 @@
-package com.hsg.plms.home.entity;
+package com.hsg.plms.user.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;

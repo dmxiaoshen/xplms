@@ -55,7 +55,8 @@
 			<value>			
 				/login/logout = logout
 				/static/** = anon	
-				/login/getCaptcha = anon									
+				/login/getCaptcha = anon	
+				/echarts/** = anon								
 				/** = my_authc
 			</value>
 		</property>

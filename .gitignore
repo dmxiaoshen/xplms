@@ -4,3 +4,9 @@ mpojo/target/
 mservice/target/
 plms/target/
 mshiro/target/
+mbase/.externalToolBuilders/
+mcommon/.externalToolBuilders/
+mpojo/.externalToolBuilders/
+mservice/.externalToolBuilders/
+plms/.externalToolBuilders/
+mshiro/.externalToolBuilders/
