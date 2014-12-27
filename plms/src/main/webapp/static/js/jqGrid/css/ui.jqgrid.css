@@ -9,6 +9,8 @@
 	top: 0;
 	padding: .0em;
 	font-size: 11px;
+	border:1px solid #ececec;
+	border-top:0 none;
 	/* border-left:1px solid #919191;
 	border-top:1px solid #919191;
 	border-right:1px solid #919191;
@@ -68,7 +70,7 @@
 }
 
 .ui-jqgrid .ui-jqgrid-htable th {
-	height: 22px;
+	height: 28px;
 	padding: 0 2px 0 2px
 }
 
@@ -82,7 +84,7 @@
 	overflow: hidden;
 	white-space: nowrap;
 	text-align: center;
-	border-top: 0 none;/*lotus注释*/
+	border-top: 0 none;
 	border-bottom: 0 none
 }
 
@@ -191,7 +193,7 @@ tr.ui-search-toolbar select {
 	height: 22px;
 	padding: 0 2px 0 2px;
 	border-bottom-width: 1px;
-	border-bottom-color: #C7C7C7;
+	border-bottom-color: #eee;
 	border-bottom-style: solid/*lotus注释*/
 }
 
@@ -208,7 +210,7 @@ tr.ui-search-toolbar select {
 	height: 22px;
 	padding: 0 2px 0 2px;
 	border-bottom-width: 1px;
-	border-bottom-color: inherit;
+	border-bottom-color: #eee;
 	border-bottom-style: solid
 }
 
@@ -219,7 +221,7 @@ tr.ui-search-toolbar select {
 	height: 22px;
 	padding: 0 2px 0 2px;
 	border-bottom-width: 1px;
-	border-bottom-color: inherit;
+	border-bottom-color: #ddd;
 	border-bottom-style: solid
 }
 
@@ -230,7 +232,7 @@ tr.ui-search-toolbar select {
 	border-right-style: solid  *//*lotus注释*/
 	padding-left:3px;/*lotus增加*/
 	padding-right:3px;/*lotus增加*/
-	border-right:1px solid #c7c7c7;/*lotus增加*/
+	border-right:1px solid #e2dede;/*lotus增加*/
 	/* border-top:1px solid #c7c7c7; */
 	font-size:12px;/*lotus增加*/
 }
@@ -250,7 +252,8 @@ tr.ui-search-toolbar select {
 .ui-jqgrid td.jqgrid-rownum {
 	padding: 0 2px 0 2px;
 	margin: 0;
-	border: 0 none
+	border: 0 none;
+	background:0 none!important;
 }
 
 .ui-jqgrid .ui-jqgrid-resize-mark {
@@ -274,7 +277,7 @@ tr.ui-search-toolbar select {
 	padding: 0;
 	overflow: hidden;
 	border-left: 0 none !important;
-	border-top: 0 none !important;
+	/*border-top: 0 none !important;*/
 	border-right: 0 none !important
 }
 
@@ -297,20 +300,21 @@ tr.ui-search-toolbar select {
 .ui-jqgrid tr.footrow-ltr td {
 	text-align: left;
 	border-right-width: 1px;
-	border-right-color: #c7c7c7;
-	border-right-style: solid
+	border-right-color: #eee;
+	border-right-style: solid;
+	border-top:1px solid #eee;/*lotus添加*/
 }
 
 .ui-jqgrid tr.footrow-rtl td {
 	text-align: right;
 	border-left-width: 1px;
 	border-left-color: inherit;
-	border-left-style: solid
+	border-left-style: solid;
 }
 
 .ui-jqgrid .ui-jqgrid-pager {
-	border-left: 0 none !important;
-	border-right: 0 none !important;
+	/* border-left: 0 none !important;
+	border-right: 0 none !important; */
 	border-bottom: 0 none !important;/*lotus注释
 	margin: 0 !important;
 	padding: 0 !important;
@@ -342,7 +346,7 @@ tr.ui-search-toolbar select {
 }
 
 .ui-jqgrid .ui-pg-button {
-	height: 19px !important
+	height: 25px !important
 }
 
 .ui-jqgrid .ui-pg-button span {
@@ -449,7 +453,12 @@ tr.ui-search-toolbar select {
 	padding: 0;
 	width: 100%
 }
-
+.ui-jqgrid .ui-subgrid td{
+	border-right:1px solid #EEEEEE;
+}
+.ui-jqgrid .ui-subgrid td:last-child{
+	border-right:0 none;
+}
 .ui-jqgrid .ui-subgrid table {
 	table-layout: fixed
 }
@@ -471,8 +480,8 @@ tr.ui-search-toolbar select {
 
 .ui-jqgrid .ui-subgrid td.subgrid-cell {
 	/* border-width: 0 0 1px 0 *//*lotus注释*/
-	border-top: 1px solid #9E9E9E;/*lotus增加*/
-	border-right: 1px solid #9E9E9E;/*lotus增加*/
+	border-bottom: 1px solid #EEEEEE;/*lotus增加*/
+	border-right: 0 none;/*lotus增加*/
 }
 
 .ui-jqgrid .ui-th-subgrid {
@@ -783,7 +792,7 @@ tr.ui-search-toolbar select {
 	text-overflow: ellipsis
 }
 .sgcollapsed,.sgexpanded{
-	background-color:#ccc;
+	/* background-color:#ccc; */
 }
 .subgrid-cell{
 	background-color:#ccc;

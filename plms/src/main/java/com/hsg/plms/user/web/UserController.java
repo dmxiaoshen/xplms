@@ -5,12 +5,14 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.hsg.plms.base.entity.Page;
 import com.hsg.plms.common.enums.UserStatusEnum;
 import com.hsg.plms.common.utils.ShiroUtil;
 import com.hsg.plms.user.entity.User;
@@ -75,4 +77,14 @@ public class UserController {
     }
     
 
+    @RequestMapping(value="/listPage")
+    public String userList(Model model){
+        return "/user/list";
+    }
+    
+    @RequestMapping(value="/list")
+    @ResponseBody
+    public Object userListData(Page page){
+        return userService.queryUserData(page);
+    }
 }

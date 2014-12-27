@@ -4,6 +4,8 @@ package com.hsg.plms.base.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.hsg.plms.base.entity.Pagination;
+
 
 public interface HibernateDao {
     
@@ -21,5 +23,9 @@ public interface HibernateDao {
     
     <T> List<T> findList(String hql,Map<String,Object> paramMap);
     
+    <T> List<T> findList(String hql,Map<String,Object> paramMap,int start,int max);
+    
     <T> T findOne(String hql,Map<String,Object> paramMap);
+    
+    <T> Pagination<T> list(final String hql, final Map<String, Object> paramMap, int page, int pageSize);
 }

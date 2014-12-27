@@ -14,5 +14,8 @@ $(function(){
 <h2>Hello World!  home主页</h2>
 ${shiroUser.userId }<label>------</label> ${shiroUser.username }
 <input type="button" value="退出" onclick="window.location.href='<c:url value='/login/logout'/>'" />
+<p><a href="${ctx}/echarts/index" >Echarts</a></p>
+<p><a href="${ctx}/region/index" >Region</a></p>
+<p><a href="${ctx}/user/listPage" >User</a></p>
 </body>
 </html>

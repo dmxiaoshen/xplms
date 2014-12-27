@@ -1,8 +1,11 @@
 package com.hsg.plms.shiro.filter;
 
+import java.io.IOException;
+
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.subject.Subject;
@@ -74,6 +77,17 @@ public class MyAuthenticatingFilter extends FormAuthenticationFilter {
     protected void setFailureAttribute(ServletRequest request, AuthenticationException ae) {
         /** 放入异常的完整信息，控制层controller需要用到 */
         request.setAttribute(getFailureKeyAttribute(), ae);
+    }
+    
+    @Override
+    protected void saveRequestAndRedirectToLogin(ServletRequest req, ServletResponse rep) throws IOException {
+        HttpServletRequest request = (HttpServletRequest) req;
+        HttpServletResponse response = (HttpServletResponse) rep;
+        if (request.getHeader("x-requested-with") != null) {
+            response.setHeader("sesssionIsTimeout", "true");//未登录时ajax请求处理
+        } else {
+            super.saveRequestAndRedirectToLogin(request, response);
+        }
     }
 
 }

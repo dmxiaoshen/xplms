@@ -33,19 +33,16 @@
 			}
 		});
 		</script>
+		<link type="text/css" rel="stylesheet" href="${ctx}/static/css/base/base.css"/>
+		<link type="text/css" rel="stylesheet" href="${ctx}/static/css/base/global.css"/>
 		<link type="text/css" rel="stylesheet" href="${ctx}/static/js/zTree/zTreeStyle/zTreeStyle.css" />
 		<link type="text/css" rel="stylesheet" href="${ctx}/static/js/common/jquery-plugin-boxy/css/boxy.css"/>
-		<link type="text/css" rel="stylesheet" href="${ctx}/static/js/common/jquery-ui/simplicity.ui.css"/>
-		<link type="text/css" rel="stylesheet" href="${ctx}/static/js/jqGrid/css/simplicity.ui.jqgrid.css" />
 		<link type="text/css" rel="stylesheet" href="${ctx}/static/js/validationEngine/css/validationEngine.jquery.css" />
 		<script type="text/javascript"  src="${ctx}/static/js/datePicker/WdatePicker.js" charset="utf-8"></script>		
 		<script type="text/javascript" src="${ctx}/static/js/jquery.corner.js" charset="utf-8"></script>
 		<script type="text/javascript" src="${ctx}/static/js/validationEngine/js/languages/jquery.validationEngine-zh_cn.js" charset="utf-8"></script>
 		<script type="text/javascript" src="${ctx}/static/js/validationEngine/js/jquery.validationEngine.js" charset="utf-8"></script>
 		<script type="text/javascript" src="${ctx}/static/js/validationEngine/js/languages/jquery.validationEngine-zh_cn.js" charset="utf-8"></script>
-		<script type="text/javascript" src="${ctx}/static/js/jquery-ui/jquery-ui-1.8.22.custom.js" charset="utf-8"></script>
-		<script type="text/javascript" src="${ctx}/static/js/jqGrid/js/jquery.jqGrid.src.js" charset="utf-8"></script>
-		<script type="text/javascript" src="${ctx}/static/js/jqGrid/js/i18n/grid.locale-zh_cn.js" charset="utf-8"></script>
 		<script type="text/javascript" src="${ctx}/static/js/jquery-plugin-boxy/js/jquery.boxy.js" charset="utf-8"></script>
 		<script type="text/javascript" src="${ctx}/static/js/zTree/jquery.ztree.all-3.5.js" charset="utf-8"></script>
     </head>
