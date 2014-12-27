@@ -89,14 +89,13 @@ $(function(){
 			records : "record",
 			repeatitems : false
 		},
-		colNames:["","省","代码","等级"],
-		colModel:[{name:"id",hidden:true},
-		          {name:"name"},
+		colNames:["省","代码","等级"],
+		colModel:[{name:"name"},
 		          {name:"code"},
 		          {name:'level'}],
         subGrid:true,
         subGridRowExpanded:function(subgrid_id,row_id){
-        	var rowData=$("#gridTable").jqGrid('getRowData',row_id);
+        	//var rowData=$("#gridTable").jqGrid('getRowData',row_id);
         	var sub_table_id = subgrid_id+"_t";
         	var sub_paper_id = subgrid_id+"_pgr";
         	$("#"+subgrid_id).html("<table id='"+sub_table_id+"' class='scroll'></table><div id='"+sub_paper_id+"' class='scroll'></div>");
@@ -112,7 +111,7 @@ $(function(){
         		altclass:"ui-widget-content-altclass",
         		rownumbers:true,
         		viewrecords:true,
-        		postData:{id:rowData['id']},
+        		postData:{id:row_id},
         		jsonReader:{
         			root : "result",
         			page : "page",
@@ -125,6 +124,40 @@ $(function(){
         		          {name:"code"},
         		          {name:'level'},
         		          {name:'region.name'}],
+        		subGrid:true,
+	       		subGridRowExpanded:function(subgrid_id,row_id){
+	       			//var rowData=$("#gridTable").jqGrid('getRowData',row_id);
+	            	var sub_table_id = subgrid_id+"_t";
+	            	var sub_paper_id = subgrid_id+"_pgr";
+	            	$("#"+subgrid_id).html("<table id='"+sub_table_id+"' class='scroll'></table><div id='"+sub_paper_id+"' class='scroll'></div>");
+	            	$("#"+sub_table_id).jqGrid({
+	            		url:ctx+"/region/province/child",
+	            		datatype:"json",
+	            		mtype:"post",
+	            		rowNum:10,
+	            		pager:"#"+sub_paper_id,
+	            		height:"auto",
+	            		autowidth:true,
+	            		altRows:true,
+	            		altclass:"ui-widget-content-altclass",
+	            		rownumbers:true,
+	            		viewrecords:true,
+	            		postData:{id:row_id},
+	            		jsonReader:{
+	            			root : "result",
+	            			page : "page",
+	            			total : "total",
+	            			records : "record",
+	            			repeatitems : false
+	            		},
+	            		colNames:["区","代码","等级","所属市"],
+	            		colModel:[{name:"name"},
+	            		          {name:"code"},
+	            		          {name:'level'},
+	            		          {name:'region.name'}]    		          
+	            	});
+	       		}
+      		          
         	});
         	}
 		
